@@ -4,7 +4,6 @@ function Addnote(){
     count++;
     let note = document.getElementById('addtxt').value; 
     let new_card = document.createElement('div');
-
     new_card.className = "my-2 mx-2 card";
     new_card.id = `Note ${count}`
     
@@ -38,15 +37,47 @@ function Delete(note_id){
 }
 
 
-function Search(){
+/*function Search(){
     let search_txt = document.getElementById('searchtxt').value;
     let i = 0;
+    let flag = false;
     while(i<note_array.length){
         if(search_txt == note_array[i]){
+            flag = true;
             let note = document.getElementById(note_array[i+1]);
-            note.style.backgroundColor = "yellow";
+            note.style.
         }
         i = i + 2;
     }
+    if(flag == false){
+        alert(" 'NOTE NOT FOUND' ");
+    }
+}*/
+let search = document.getElementById('searchtxt');
+search.addEventListener('input',Search);
+
+
+// IMPORTANT CODE FOR SEARCH FUNCTIONALITY
+
+function Search(){
+    let search_txt = search.value.toLowerCase();
+    console.log(search_txt);
+    let cards = document.getElementsByClassName('my-2 mx-2 card');
+    console.log(cards);
+    Array.from(cards).forEach(function(element){
+        let card_txt = element.getElementsByTagName('p')[0].innerHTML;
+        console.log(card_txt);
+        if(card_txt.includes(search_txt)){
+            element.style.display = "block";
+        }
+        else{
+            element.style.display = "none";
+        }
+        
+    })
+
 }
+
+
+
         
