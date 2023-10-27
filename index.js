@@ -61,12 +61,9 @@ search.addEventListener('input',Search);
 
 function Search(){
     let search_txt = search.value.toLowerCase();
-    console.log(search_txt);
     let cards = document.getElementsByClassName('my-2 mx-2 card');
-    console.log(cards);
     Array.from(cards).forEach(function(element){
-        let card_txt = element.getElementsByTagName('p')[0].innerHTML;
-        console.log(card_txt);
+        let card_txt = element.getElementsByTagName('p')[0].innerHTML.toLowerCase();
         if(card_txt.includes(search_txt)){
             element.style.display = "block";
         }
